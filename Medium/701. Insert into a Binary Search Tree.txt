@@ -1,0 +1,41 @@
+#https://leetcode.com/problems/insert-into-a-binary-search-tree/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        
+        TreeNode rootTemp;
+        rootTemp = root;
+        TreeNode current;
+        TreeNode newNode = new TreeNode(val);
+        current = root;
+        boolean r= true;
+        while(current != null){
+            root = current;
+            if(val > current.val){
+                current = root.right;
+                r= true;
+            }
+            else{
+                current = root.left;
+                r=false;
+            }                
+        }
+        System.out.println("value: "+root.val);
+            if(r)
+                root.right = newNode;
+            else
+                root.left = newNode;
+        
+     return rootTemp;
+        
+    }
+}
