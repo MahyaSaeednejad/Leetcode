@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        
+        Stack nodes = new Stack<>(); 
+        nodes.push(root);
+        int sum=0;
+
+        while (!nodes.isEmpty()) {
+            
+            TreeNode current = (TreeNode) nodes.pop();
+            if (current.val>=L && current.val<=R) { 
+                sum += current.val;
+            }
+            
+            if(current.left != null)
+                nodes.push(current.left);
+            if(current.right != null)
+                nodes.push(current.right);
+        } 
+     return sum;
+    }
+}

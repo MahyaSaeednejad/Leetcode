@@ -1,0 +1,69 @@
+#https://leetcode.com/problems/flipping-an-image/
+
+class Solution {
+    public int[][] flipAndInvertImage(int[][] A) {
+        
+        if(A[0].length %2 == 0){
+        for(int i=0; i< A.length; i++)
+            for(int j=0; j<A[0].length/2; j++){
+                
+                 int c= A[0].length-j-1;
+                
+                if(A[i][c] != A[i][j]){   
+                    int temp = A[i][c];
+                    A[i][c]= A[i][j];
+                    A[i][j] = temp;
+                }                
+                    if(A[i][j] == 0 && A[i][c] == 0){
+                        A[i][j]=1;
+                        A[i][c]=1;
+                    }
+                    else if(A[i][j] == 1 && A[i][c] == 0){
+                        A[i][j]=0;
+                        A[i][c]=1;
+                    }
+                    else if(A[i][j] == 1 && A[i][c] == 1){
+                        A[i][j]=0;
+                        A[i][c]=0;
+                    }
+                    else if(A[i][j] == 0 && A[i][c] == 1){
+                        A[i][j]=1;
+                        A[i][c]=0;
+                    }
+
+            }
+        }
+        if(A[0].length %2 != 0){
+        for(int i=0; i< A.length; i++)
+            for(int j=0; j<A[0].length/2+1; j++){
+                
+                 int c= A[0].length-j-1;
+                
+                if(A[i][c] != A[i][j]){   
+                    int temp = A[i][c];
+                    A[i][c]= A[i][j];
+                    A[i][j] = temp;
+                }                
+                    if(A[i][j] == 0 && A[i][c] == 0){
+                        A[i][j]=1;
+                        A[i][c]=1;
+                    }
+                    else if(A[i][j] == 1 && A[i][c] == 0){
+                        A[i][j]=0;
+                        A[i][c]=1;
+                    }
+                    else if(A[i][j] == 1 && A[i][c] == 1){
+                        A[i][j]=0;
+                        A[i][c]=0;
+                    }
+                    else if(A[i][j] == 0 && A[i][c] == 1){
+                        A[i][j]=1;
+                        A[i][c]=0;
+                    }
+
+            }
+        }
+      return A;  
+        
+    }
+}
