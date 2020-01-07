@@ -1,0 +1,47 @@
+// Fibonacci dynamic programmming
+
+import java.util.Scanner;
+
+class Main{
+
+    public static int fib_dynamic(int n, int[] memory){
+
+        if(n == 0)
+            return 0;
+        if (n == 1)
+            return 1;
+        else{
+
+            if(memory[n] != 0)
+                return memory[n];
+
+            else{
+                memory[n] = fib_dynamic(n-1, memory) + fib_dynamic(n-2, memory);
+            }
+        }
+        return memory[n];
+    }
+
+    public static int fibonacci(int n){
+
+        int [] num = new int[n+1];
+        num[0] = 0;
+        num[1] = 1;
+        for(int i=2; i<=n; i++){
+           num[i] = num[i-1]+num[i-2];
+        }
+        return num[n-1];
+    }
+
+    public static void main(String []args){
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the number of fibonacci");
+        int n = scan.nextInt();
+        System.out.println("Sum of "+ n +" fibonacci number is: "+ fibonacci(n));
+
+        int[] memory = new int[n];
+        System.out.println("Sum of "+ n +" fibonacci number is: "+ fib_dynamic(n-1,memory));
+
+    }
+}

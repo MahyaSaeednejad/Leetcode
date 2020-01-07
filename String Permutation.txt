@@ -1,0 +1,35 @@
+// find all permutation of a string
+
+import java.util.*;
+public class Main{
+    public static ArrayList<String> merge(ArrayList<String> per, char lastchar){
+
+        ArrayList<String> res = new ArrayList<String>();
+        for(String s: per){
+            for(int i=0; i < s.length()+1 ; i++){
+                res.add(s.substring(0,i)+ lastchar+ s.substring(i,s.length()));
+            }
+        }
+        return res;
+    }
+
+    public static ArrayList<String >permutation(String str){
+
+        ArrayList<String> result = new ArrayList<String>();
+        int length = str.length();
+
+        if(length == 1)
+            result.add(str);
+        else{
+            result = merge(permutation(str.substring(0,length -1)), str.charAt(length -1));
+        }
+        return result;
+    }
+
+    public static void main(String []args){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a string");
+        String str = scan.nextLine();
+        System.out.println(permutation(str));
+    }
+}
