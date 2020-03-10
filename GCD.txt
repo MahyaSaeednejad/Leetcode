@@ -1,0 +1,23 @@
+// Finding great common divisors
+import java.util.Scanner;
+
+public class Fibonacci {
+
+    public static int GCD(int a, int b){
+
+        if(a%b == 0)
+            return b;
+        else
+            return GCD(b,a%b);
+    }
+    public static void main(String []args){
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter first number");
+        int a = scan.nextInt();
+        System.out.println("Enter second number");
+        int b = scan.nextInt();
+
+        System.out.println(GCD(a,b));
+    }
+}
